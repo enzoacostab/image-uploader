@@ -29,7 +29,6 @@ const useActions = () =>{
   }
   const uploadFile = async(file: File) => {
     setIsLoading(true);
-
     try {
       const filePath = `uploads/${file.name}`;
       await supabase.storage.from("bucket-1").upload(filePath, file);
@@ -37,9 +36,7 @@ const useActions = () =>{
       setUploadedImageUrl(urlData.data.publicUrl);
     } 
     catch (error) {
-      if (error) {
-        toast.error("Error uploading image:", error);
-      }
+      console.error("Error uploading image:", error);
     } 
     finally {
       setIsLoading(false);
@@ -56,12 +53,16 @@ const useActions = () =>{
     }
   };
 
+  const handleTryAgain = () => {
+    setUploadSuccessful(false);
+  }
+
   const truncateUrl = (url: string, length = 40) => {
     if (url.length <= length) return url;
     return url.substring(0, length) + "...";
   };
 
-  return {handleDrop, handleDragOver, handleClick, truncateUrl, copyToClipboard}
+  return {handleDrop, handleDragOver, handleClick, truncateUrl, copyToClipboard, handleTryAgain}
 }
 
 export default useActions

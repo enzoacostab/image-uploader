@@ -19,7 +19,7 @@ export default function UploadSuccessful() {
         <h3 className="m-0 text-[18px] tracking-[-0.04em] font-medium font-poppins text-[#4F4F4F] text-left inline-block">Uploaded Successfully!</h3>
       </div>
       <div className="flex justify-center">
-        <img width={350} src={uploadedImageUrl} className="rounded-xl"></img>
+        <img src={uploadedImageUrl} className="rounded-xl w-[100%] max-w-[350px]"></img>
       </div>
       <div className="flex flex-col items-center mt-5">
         <div className="bg-[#F6F8FB] pl-2 pr-[2px] flex items-center justify-between w-full h-[34px] rounded-[8px] border-[1px] border-[#E0E0E0] ">
